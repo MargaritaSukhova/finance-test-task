@@ -1,18 +1,20 @@
 import { useEffect } from "react";
-import { io } from "socket.io-client";
-
+// import { io } from "socket.io-client";
+import { useDispatch, useSelector } from "react-redux";
+// import { fetchTickerData } from "./redux/operations";
+import {getTickerQuotes} from './redux/actions'
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-	const socket = io("http://localhost:4000");
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-    socket.emit("start");
-    socket.on("ticker", (quotes) => {
-			console.log(quotes);
-		});
-	}, [socket]);
+		dispatch(getTickerQuotes());
+  }, [dispatch]);
+  
+  const tickers = useSelector((state) => state.tickerData);
+  // console.log(tickers);
 
 	return (
 		<div className="App">
@@ -21,6 +23,13 @@ function App() {
 				<p>
 					Edit <code>src/App.js</code> and save to reload.
 				</p>
+				<ul>
+					{tickers.map((ticker) => (
+						<li key={ticker.ticker}>
+							{ticker.ticker}: {ticker.price}
+						</li>
+					))}
+				</ul>
 				<a
 					className="App-link"
 					href="https://reactjs.org"
