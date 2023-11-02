@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getTickerQuotes } from "./redux/actions";
-import "./App.css";
 import { ButtonAppBar } from "./components/AppBar/AppBar.jsx";
 import { TickersList } from "./components/TickersList/TickersList.jsx";
 import { FavoriteTickers } from "./components/FavoriteTickers/FavoriteTickers.jsx";
+import "./App.css";
 
 function App() {
 	const dispatch = useDispatch();
@@ -13,14 +13,11 @@ function App() {
 		dispatch(getTickerQuotes());
 	}, [dispatch]);
 
-	const tickers = useSelector((state) => state.tickerData);
-	console.log(tickers);
-
 	return (
 		<div className="App" data-testid="app">
 			<ButtonAppBar />
-			<TickersList ></TickersList>
-			<FavoriteTickers ></FavoriteTickers>
+			<TickersList></TickersList>
+			<FavoriteTickers></FavoriteTickers>
 		</div>
 	);
 }

@@ -19,8 +19,7 @@ export const TickersList = () => {
 				{tickers.map((ticker) => (
 					<TickerCard
 						key={ticker.ticker}
-						ticker={ticker}
-						
+						ticker={ticker}	
 					></TickerCard>
 				))}
 			</Grid>
