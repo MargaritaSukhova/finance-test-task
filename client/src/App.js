@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-// import { io } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchTickerData } from "./redux/operations";
 import { getTickerQuotes } from "./redux/actions";
-import logo from "./logo.svg";
 import "./App.css";
-import { TickersList } from "./components/TickersList.jsx";
+import { ButtonAppBar } from "./components/AppBar/AppBar.jsx";
+import { TickersList } from "./components/TickersList/TickersList.jsx";
+import { FavoriteTickers } from "./components/FavoriteTickers/FavoriteTickers.jsx";
 
 function App() {
 	const dispatch = useDispatch();
@@ -19,28 +18,9 @@ function App() {
 
 	return (
 		<div className="App">
-			{/* <header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p> */}
-			<ul>
-				{tickers.map((ticker) => (
-					<li key={ticker.ticker}>
-						{ticker.ticker}: {ticker.price}
-					</li>
-				))}
-			</ul>
-			<TickersList tickers={tickers}></TickersList>
-			{/* <a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header> */}
+			<ButtonAppBar />
+			<TickersList></TickersList>
+			<FavoriteTickers></FavoriteTickers>
 		</div>
 	);
 }
