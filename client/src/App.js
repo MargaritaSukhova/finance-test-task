@@ -17,10 +17,10 @@ function App() {
 	console.log(tickers);
 
 	return (
-		<div className="App">
+		<div className="App" data-testid="app">
 			<ButtonAppBar />
-			<TickersList></TickersList>
-			<FavoriteTickers></FavoriteTickers>
+			<TickersList ></TickersList>
+			<FavoriteTickers ></FavoriteTickers>
 		</div>
 	);
 }

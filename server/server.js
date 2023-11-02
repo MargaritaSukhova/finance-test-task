@@ -32,7 +32,6 @@ function utcDate() {
 		now.getUTCSeconds()
 	);
 }
-// const favoriteTickersArray = [];
 
 function getQuotes(socket) {
 	const quotes = tickers.map((ticker) => ({
@@ -47,32 +46,7 @@ function getQuotes(socket) {
 	}));
 
 	socket.emit("ticker", quotes);
-
-	// const favoriteQuotes = quotes.filter((quote) =>
-	// 	favoriteTickersArray.includes(quote.ticker)
-	// );
-
-	// socket.emit("favoriteTicker", favoriteQuotes);
 }
-
-// function getFavoriteQuotes(socket) {
-// 	const quotes = tickers.map((ticker) => ({
-// 		ticker,
-// 		exchange: "NASDAQ",
-// 		price: randomValue(100, 300, 2),
-// 		change: randomValue(0, 200, 2),
-// 		change_percent: randomValue(0, 1, 2),
-// 		dividend: randomValue(0, 1, 2),
-// 		yield: randomValue(0, 2, 2),
-// 		last_trade_time: utcDate(),
-//   }));
-
-//   const favoriteQuotes = quotes.filter((quote) =>
-// 		favoriteTickersArray.includes(quote.ticker)
-// 	);
-
-// 	socket.emit("favoriteTicker", favoriteQuotes);
-// }
 
 function trackTickers(socket) {
 	// run the first time immediately
@@ -87,20 +61,6 @@ function trackTickers(socket) {
 		clearInterval(timer);
 	});
 }
-
-// function trackFavoriteTickers(socket) {
-// 	// run the first time immediately
-// 	getFavoriteQuotes(socket);
-
-// 	// every N seconds
-// 	const timer = setInterval(function () {
-// 		getFavoriteQuotes(socket);
-// 	}, FETCH_INTERVAL);
-
-// 	socket.on("disconnect", function () {
-// 		clearInterval(timer);
-// 	});
-// }
 
 const app = express();
 app.use(cors());
@@ -120,15 +80,6 @@ socketServer.on("connection", (socket) => {
 	socket.on("start", () => {
 		trackTickers(socket);
 	});
-	// socket.on("favorite", (favoriteTickers) => {
-	// 	// Handle the array of favorite tickers received from the frontend
-	// 	console.log("Received favorite tickers:", favoriteTickers);
-	// 	favoriteTickersArray.length = 0; // Clear the existing favoriteTickers
-	// 	favoriteTickersArray.push(...favoriteTickers);
-	// 	trackTickers(socket);
-
-	// 	// You can process this data as needed, e.g., filter ticker updates based on favoriteTickersArray
-	// });
 });
 
 server.listen(PORT, () => {

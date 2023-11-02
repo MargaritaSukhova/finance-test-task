@@ -13,7 +13,7 @@ export const TickerCard = ({ ticker }) => {
 	const dispatch = useDispatch();
 	const { ticker: tickerName, price, change, change_percent } = ticker;
 	return (
-		<Grid item xs={4} sm={4} md={2}>
+		<Grid item xs={4} sm={4} md={2} data-testid="ticker-card">
 			<Item elevation={3}>
 				{change > 0 ? (
 					<ArrowUpwardIcon color="success" />

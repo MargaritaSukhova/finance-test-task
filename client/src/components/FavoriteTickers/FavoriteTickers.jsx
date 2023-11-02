@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import {deleteFavoriteTickerFromState} from "../../redux/actions"
+import { deleteFavoriteTickerFromState } from "../../redux/actions";
 
 export const FavoriteTickers = () => {
 	const tickers = useSelector((state) => state.tickerData);
@@ -19,7 +19,13 @@ export const FavoriteTickers = () => {
 
 	return (
 		<>
-			<Typography component="h2" variant="h6" color="primary" gutterBottom>
+			<Typography
+				component="h2"
+				variant="h6"
+				color="primary"
+				gutterBottom
+				data-testid="favorite-tickers"
+			>
 				Favorite Tickers
 			</Typography>
 			{favoriteTickersData.length > 0 ? (
@@ -47,6 +53,7 @@ export const FavoriteTickers = () => {
 									<TableCell>{change_percent}%</TableCell>
 									<TableCell align="center">
 										<IconButton
+											data-testid="delete-favorite-button"
 											onClick={() =>
 												dispatch(deleteFavoriteTickerFromState(ticker))
 											}
@@ -60,9 +67,7 @@ export const FavoriteTickers = () => {
 					</TableBody>
 				</Table>
 			) : (
-				<Typography >
-					Add tickers to follow
-				</Typography>
+				<Typography>Add tickers to follow</Typography>
 			)}
 		</>
 	);
