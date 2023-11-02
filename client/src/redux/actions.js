@@ -6,25 +6,24 @@
 
 // export const getQuotesError = createAction("quotes/getQuotesError");
 
-import io from "socket.io-client"; // Import the socket.io-client library
+import io from "socket.io-client"; 
 
-const socket = io("http://localhost:4000"); // Connect to your server
+const socket = io("http://localhost:4000"); 
 
 // Action Types
-export const SET_TICKER_DATA = "SET_TICKER_DATA";
+export const GET_TICKER_DATA = "GET_TICKER_DATA";
 
 // Action Creators
 const setTickerData = (data) => ({
-	type: SET_TICKER_DATA,
+	type: GET_TICKER_DATA,
 	data,
 });
 
 // Redux Thunk action to start listening for ticker updates
 export const getTickerQuotes = () => {
 	return (dispatch) => {
-		socket.emit("start"); // Tell the server to start sending updates
+		socket.emit("start"); 
 
-		// Listen for 'ticker' events from the server and dispatch data to the Redux store
 		socket.on("ticker", (data) => {
 			dispatch(setTickerData(data));
 		});

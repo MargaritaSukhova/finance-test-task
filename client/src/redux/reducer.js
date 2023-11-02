@@ -1,15 +1,15 @@
-import { SET_TICKER_DATA } from "./actions";
+import { GET_TICKER_DATA } from "./actions";
 
 const initialState = {
-	tickerData: [], // Initial state for ticker data
+	tickerData: [], 
 };
 
 const tickerReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case SET_TICKER_DATA:
+		case GET_TICKER_DATA:
 			return {
 				...state,
-				tickerData: action.data, // Update ticker data in the state
+				tickerData: action.data, 
 			};
 		default:
 			return state;
