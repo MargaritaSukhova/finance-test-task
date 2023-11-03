@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getTickerQuotes } from "./redux/actions";
-import { ButtonAppBar } from "./components/AppBar/AppBar.jsx";
+import { ButtonAppBar } from "./components/ButtonAppBar/ButtonAppBar.jsx";
 import { TickersList } from "./components/TickersList/TickersList.jsx";
 import { FavoriteTickers } from "./components/FavoriteTickers/FavoriteTickers.jsx";
 import "./App.css";

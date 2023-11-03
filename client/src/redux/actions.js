@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-const socket = io("http://localhost:4000");
+export const socket = io("http://localhost:4000");
 
 // Action Types
 export const GET_TICKER_DATA = "GET_TICKER_DATA";
